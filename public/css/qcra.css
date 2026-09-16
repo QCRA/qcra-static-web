@@ -1,0 +1,60 @@
+/*
+ * QCRA website stylesheet
+ *
+ * Typography:
+ *   Bellefair       - QCRA identity
+ *   Source Sans 3   - body text
+ */
+
+:root {
+    --font-heading: "Bellefair", serif;
+    --font-body: "Source Sans 3", sans-serif;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 12pt;
+}
+
+.site-header {
+    padding: 2rem;
+}
+
+.site-header__inner,
+.site-main,
+.site-footer__inner {
+    max-width: 60rem;
+    margin-inline: auto;
+}
+
+.site-brand {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.site-brand__name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 20pt;
+}
+
+.site-brand__association {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 12pt;
+    letter-spacing: 3.2pt;
+}
+
+.site-main {
+    padding: 2rem;
+}
+
+.site-footer {
+    padding: 2rem;
+}
