@@ -6,8 +6,64 @@
  *   Source Sans 3   - body text
  */
 
+@font-face {
+    font-family: "Bellefair";
+    src: url("/fonts/Bellefair/Bellefair-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("/fonts/SourceSans3/SourceSans3-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("/fonts/SourceSans3/SourceSans3-Italic.woff2") format("woff2");
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("/fonts/SourceSans3/SourceSans3-Semibold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("/fonts/SourceSans3/SourceSans3-SemiboldItalic.woff2") format("woff2");
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("/fonts/SourceSans3/SourceSans3-Bold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("/fonts/SourceSans3/SourceSans3-BoldItalic.woff2") format("woff2");
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+}
+
 :root {
-    --font-heading: "Bellefair", serif;
+    --font-heading: "Bellefair", Georgia, serif;
     --font-body: "Source Sans 3", sans-serif;
 }
 
@@ -48,7 +104,7 @@ body {
     display: block;
     font-family: var(--font-heading);
     font-size: 12pt;
-    letter-spacing: 3.2pt;
+    letter-spacing: 4.8pt;
 }
 
 .site-main {
