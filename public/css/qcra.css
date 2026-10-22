@@ -2,9 +2,17 @@
  * QCRA website stylesheet
  *
  * Typography:
- *   Bellefair       - QCRA identity
- *   Source Sans 3   - body text
+ *   Bellefair       - display / headings / site identity
+ *   Source Sans 3   - body / navigation / interface text
+ *
+ * Colour has deliberately not been introduced yet.
+ * The layout and hierarchy should work in monochrome first.
  */
+
+
+/* --------------------------------------------------------------------------
+   Fonts
+   -------------------------------------------------------------------------- */
 
 @font-face {
     font-family: "Bellefair";
@@ -62,10 +70,27 @@
     font-display: swap;
 }
 
+
+/* --------------------------------------------------------------------------
+   Variables
+   -------------------------------------------------------------------------- */
+
 :root {
     --font-heading: "Bellefair", Georgia, serif;
     --font-body: "Source Sans 3", sans-serif;
+
+    --content-width: 60rem;
+
+    --spacing-page: 2rem;
+    --spacing-section: 3rem;
+
+    --border-width: 1px;
 }
+
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
 
 html {
     font-size: 100%;
@@ -75,42 +100,419 @@ body {
     margin: 0;
     font-family: var(--font-body);
     font-size: 12pt;
+    line-height: 1.5;
+    color: #111;
+    background: #fff;
 }
+
+a {
+    color: inherit;
+    text-underline-offset: 0.2em;
+}
+
+
+/* --------------------------------------------------------------------------
+   Accessibility
+   -------------------------------------------------------------------------- */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   Site header
+   -------------------------------------------------------------------------- */
 
 .site-header {
-    padding: 2rem;
+    padding: 2rem var(--spacing-page) 1.5rem;
 }
 
-.site-header__inner,
-.site-main,
-.site-footer__inner {
-    max-width: 60rem;
+.site-header__inner {
+    max-width: var(--content-width);
     margin-inline: auto;
 }
 
+/* --------------------------------------------------------------------------
+   Site identity / logo
+   -------------------------------------------------------------------------- */
+
 .site-brand {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
+    color: inherit;
+    text-decoration: none;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1;
+}
+
+.site-brand__name {
+    display: block;
+    font-size: 1em;
+}
+
+.site-brand__association {
+    display: block;
+    position: relative;
+    left: 0.25em;
+    font-size: 0.6em;
+    line-height: 1.2;
+    letter-spacing: 0.40em;
+}
+
+
+/* --------------------------------------------------------------------------
+   Navigation
+   -------------------------------------------------------------------------- */
+
+.site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav a {
     display: inline-block;
     color: inherit;
     text-decoration: none;
 }
 
-.site-brand__name {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 20pt;
+
+/* Utility navigation */
+
+.site-nav--utility {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
 }
 
-.site-brand__association {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 12pt;
-    letter-spacing: 4.8pt;
+.site-nav--utility li + li::before {
+    content: "·";
+    display: inline-block;
+    margin-inline: 0.7em;
 }
+
+.site-nav--utility a[aria-current="page"] {
+    font-weight: 600;
+}
+
+
+/* Global navigation */
+
+.site-nav--global {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+}
+
+.site-nav--global li + li {
+    margin-inline-start: 2rem;
+}
+
+.site-nav--global a {
+    padding-block: 0.15em;
+}
+
+.site-nav--global a[aria-current="page"] {
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.14em;
+    text-underline-offset: 0.38em;
+}
+
+.breadcrumb {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid currentColor;
+    border-top: 1px solid currentColor;
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.breadcrumb li + li::before {
+    content: "/";
+    display: inline-block;
+    margin-inline: 0.6em;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+}
+
+.breadcrumb li[aria-current="page"] {
+    font-weight: 600;
+}
+
+
+/* --------------------------------------------------------------------------
+   Main content
+   -------------------------------------------------------------------------- */
 
 .site-main {
-    padding: 2rem;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding:
+        0
+        var(--spacing-page)
+        var(--spacing-section);
 }
 
+.page-intro {
+    max-width: 48rem;
+}
+
+.page-intro h1 {
+    margin: 0 0 0.75rem;
+    font-size: 2rem;
+    line-height: 1.15;
+    font-weight: 600;
+}
+
+.page-intro__lead {
+    margin: 0;
+    max-width: 42rem;
+    font-size: 1.1rem;
+}
+
+.content-section {
+    max-width: 48rem;
+    margin-top: var(--spacing-section);
+}
+
+.content-section h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.content-section p {
+    margin: 0 0 1rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   Fat footer
+   -------------------------------------------------------------------------- */
+
 .site-footer {
-    padding: 2rem;
+    margin-top: 2rem;
+
+    padding:
+        3.5rem
+        var(--spacing-page)
+        3rem;
+
+}
+
+.site-footer__inner {
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding-top: 2rem;
+    display: grid;
+    gap: 2rem;
+    text-align: center;
+    border-top: 2px solid currentColor;
+}
+
+
+/* Footer identity */
+
+.site-footer__identity h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.site-footer__identity p {
+    margin: 0.35rem 0 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   Footer doormat navigation
+   -------------------------------------------------------------------------- */
+
+.site-footer__doormat {
+    display: grid;
+    gap: 2.25rem;
+    padding-block: 1rem;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-nav a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.footer-nav--utility {
+    font-size: 0.9rem;
+}
+
+.footer-nav--utility li + li::before {
+    content: "·";
+    display: inline-block;
+    margin-inline: 0.7em;
+}
+
+.footer-nav--global {
+    font-size: 1rem;
+    gap: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Contextual / secondary navigation
+   -------------------------------------------------------------------------- */
+
+.site-footer__secondary {
+    max-width: 40rem;
+    margin-inline: auto;
+}
+
+.site-footer__secondary h2 {
+    margin: 0 0 0.6rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.site-footer__secondary ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-footer__secondary a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.site-footer__secondary a:hover,
+.site-footer__secondary a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+/* --------------------------------------------------------------------------
+   Footer QR component
+   -------------------------------------------------------------------------- */
+
+.footer-qr {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 1rem;
+
+    margin-top: 0.5rem;
+}
+
+.footer-qr__intro,
+.footer-qr__instruction {
+    display: block;
+}
+
+.footer-qr__image {
+    display: block;
+
+    width: 7rem;
+    height: 7rem;
+
+    flex: 0 0 7rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   Narrow screens
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 40rem) {
+
+    :root {
+        --spacing-page: 1.25rem;
+    }
+
+    .site-header {
+        padding-top: 1.5rem;
+    }
+
+    .site-nav--utility {
+        margin-top: 1rem;
+    }
+
+    .site-nav--global {
+        margin-top: 1rem;
+    }
+
+    .site-nav--global li + li {
+        margin-inline-start: 1.25rem;
+    }
+
+    .page-intro h1 {
+        font-size: 1.75rem;
+    }
+
+    .site-footer {
+        padding-top: 3rem;
+    }
+
+    .footer-nav li + li {
+        margin-inline-start: 1rem;
+    }
+
+    .footer-qr {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .footer-qr__intro {
+        margin-bottom: 0.25rem;
+    }
+
+    .footer-qr__instruction {
+        margin-top: 0.25rem;
+    }
 }
