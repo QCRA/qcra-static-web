@@ -2,18 +2,20 @@
 
 Source for the QCRA website at https://qcra.org.uk/
 
+## Design & Philosophy
+
+- **Mobile-First:** Optimized for mobile viewing as most residents will access the site via phones.
+- **QR Code Integration:** Every page features a dedicated SVG QR code to enable easy sharing and physical-to-digital linkage for notices and documents displayed around the development.
+
 ## Deployment
 
 The `public/` directory is the web root.
+The production site is deployed through Cloudflare Pages from the `main` branch[cite: 5].
 
-The production site will be deployed through Cloudflare Pages from
-the `main` branch.
+## Local Development & Preview
 
-## Typography
+To preview the site locally, you can run a lightweight static server from the `public/` directory:
 
-The QCRA typographic identity uses:
-
-- Bellefair for the QCRA name
-- Source Sans 3 for body text
-
-See the QCRA style guide for the definitive specification.
+```bash
+cd public
+python3 -m http.server 8000
